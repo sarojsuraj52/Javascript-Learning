@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        .error{
+            color: red;
+            padding: 10px 0;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Check Evenets</h1>
+    <form class="my-form">
+        <label for="name">Name</label>
+        <br>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="email">Email</label>
+        <br>
+        <input type="email" name="email" id="email">
+        <br>
+        <span class="error"></span>
+        <br>
+        <button type="submit" id="btn">submit</button>
+    </form>
+    <script>
+        let btn = document.querySelector('#btn');
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Clicked')
+        })
+        btn.addEventListener('mouseover', (e) => {
+            e.preventDefault();
+            document.querySelector('body').style.backgroundColor = "black"
+            document.querySelector('body').style.color = "white"
+        })
+        btn.addEventListener('mouseout', (e) => {
+            e.preventDefault();
+            document.querySelector('body').style.backgroundColor = "blue"
+            document.querySelector('body').style.color = "white"
+            
+        })
+
+        const nameInput = document.querySelector('#name');
+        const emailInput = document.querySelector('#email');
+        const error = document.querySelector('.error');
+        const myForm = document.querySelector('.my-form');
+        myForm.addEventListener('submit', onSubmit);
+        function onSubmit(e){
+            e.preventDefault();
+            if(nameInput.value === '' || emailInput.value === ''){
+                error.innerHTML="Please fill the details";
+                setTimeout(() => error.remove(), 3000)
+                
+            }else{
+                console.log(nameInput.value,emailInput.value)
+            }
+        }
+        
+
+        
+    </script>
+</body>
+</html>

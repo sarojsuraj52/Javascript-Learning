@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        .error{
+            color: red;
+            padding: 10px 0;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Check Evenets</h1>
+    <form class="my-form">
+        <label for="name">Name</label>
+        <br>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="email">Email</label>
+        <br>
+        <input type="email" name="email" id="email">
+        <br>
+        <span class="error"></span>
+        <br>
+        <button type="submit" id="btn">submit</button>
+    </form>
+    <div class="items">
+        <li class="item">item 1</li>
+        <li class="item">item 2</li>
+        <li class="item">item 3</li>
+    </div>
+    <script>
+    // const items = document.querySelectorAll('.item');
+    // items.forEach(e=>{console.log(e)})
+    const ul = document.querySelector('.items');
+    // ul.remove();
+    // ul.lastElementChild.remove()
+    ul.firstElementChild.textContent = 'Hello';
+    ul.firstElementChild.style.color = 'green'
+    ul.children[1].innerText  = 'Suraj';
+    ul.children[1].style.color = 'yellow';
+    ul.lastElementChild.innerHTML = '<h1> Heading Tag </h1>';
+        
+
+        
+    </script>
+</body>
+</html>
