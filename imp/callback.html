@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callbacks</title>
+</head>
+<body>
+    <h1>Posts after callback will appear here</h1>
+    <script>
+        const posts = [
+    {'title':'post one','body':'This is post one',createdAt:new Date().getTime()},{'title':'post two','body':'This is post two',createdAt:new Date().getTime()}
+]
+
+let intervalId;
+function getPosts(){
+    clearInterval(intervalId)
+    intervalId = setInterval(() => {
+        let output ='';
+        posts.forEach((post) =>{
+            output += `<li>${post.title} - ${Math.floor((new Date().getTime() - post.createdAt )/1000)} seconds ago</li>`;
+        })
+        document.body.innerHTML = output;
+        console.log(intervalId)
+    }, 1000);
+}
+
+function createPosts(post, callback){
+    setTimeout(() => {
+        posts.push({...post,createdAt:new Date().getTime()});
+        callback()
+    }, 2000);
+}
+
+function create4thPost(post,callback2){
+setTimeout(() => {
+    posts.push({...post,createdAt:new Date().getTime()});
+    callback2();
+}, 3000);
+}
+createPosts({'title':'post three','body':'This is post three'},getPosts);
+create4thPost({'title':'post four','body':'This is post four'},getPosts);
+    </script>
+</body>
+</html>
